@@ -1,5 +1,6 @@
-package com.macdevelop.todoapp.model;
+package com.macdevelop.todoapp.repositiry;
 
+import com.macdevelop.todoapp.model.Task;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;

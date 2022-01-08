@@ -1,5 +1,6 @@
-package com.macdevelop.todoapp.model;
+package com.macdevelop.todoapp.repositiry;
 
+import com.macdevelop.todoapp.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

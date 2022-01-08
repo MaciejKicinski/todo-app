@@ -1,7 +1,7 @@
 package com.macdevelop.todoapp.controller;
 
 import com.macdevelop.todoapp.model.Task;
-import com.macdevelop.todoapp.model.TaskRepository;
+import com.macdevelop.todoapp.repositiry.TaskRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +20,7 @@ class TaskRestController {
 
     @GetMapping(value = "/tasks", params = {"!sort", "!page", "!size"})
     ResponseEntity<List<Task>> readAllTasks() {
-        log.warn("Exposing all the tasks!");
+        log.info("Exposing all the tasks!");
         return ResponseEntity.ok(repository.findAll());
     }
 
@@ -52,4 +52,5 @@ class TaskRestController {
         repository.save(toUpdate);
         return ResponseEntity.noContent().build();
     }
+
 }
