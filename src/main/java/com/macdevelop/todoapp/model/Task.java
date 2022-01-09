@@ -1,8 +1,11 @@
 package com.macdevelop.todoapp.model;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+@NoArgsConstructor
 @Entity
 @Table(name = "tasks")
 public class Task {
@@ -13,9 +16,6 @@ public class Task {
     @NotBlank(message = "Task's description must not be empty")
     private String description;
     private boolean done;
-
-    Task() {
-    }
 
     public int getId() {
         return id;

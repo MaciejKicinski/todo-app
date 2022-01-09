@@ -3,4 +3,7 @@ spring:
     enabled: true
     path: '/console'
   datasource:
-    url: 'jdbc:h2:file:./todo-db'
+    url: 'jdbc:h2:file:C:\Users\kicinskim\OneDrive\JAVA\kodzik\todo-app\todo-db'
+  jpa:
+    hibernate:
+      ddl-auto: validate
