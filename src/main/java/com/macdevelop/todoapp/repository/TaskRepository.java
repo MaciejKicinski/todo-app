@@ -1,4 +1,4 @@
-package com.macdevelop.todoapp.repositiry;
+package com.macdevelop.todoapp.repository;
 
 import com.macdevelop.todoapp.model.Task;
 import org.springframework.data.domain.Page;
@@ -16,6 +16,8 @@ public interface TaskRepository {
     Optional<Task> findById(Integer id);
 
     boolean existsById(Integer id);
+
+    boolean existsByDoneIsFalseAndGroup_Id(Integer id);
 
     List<Task> findByDone(@Param("state") boolean done);
 

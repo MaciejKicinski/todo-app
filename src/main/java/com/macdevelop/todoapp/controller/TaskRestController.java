@@ -1,7 +1,7 @@
 package com.macdevelop.todoapp.controller;
 
 import com.macdevelop.todoapp.model.Task;
-import com.macdevelop.todoapp.repositiry.TaskRepository;
+import com.macdevelop.todoapp.repository.TaskRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;

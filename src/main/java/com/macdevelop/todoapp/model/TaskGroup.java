@@ -5,11 +5,12 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @NoArgsConstructor
 @Entity
-@Table(name = "tasks")
-public class Task {
+@Table(name = "task_groups")
+public class TaskGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,12 +18,8 @@ public class Task {
     @NotBlank(message = "Task's description must not be empty")
     private String description;
     private boolean done;
-    private LocalDateTime deadline;
-    @Embedded
-    private Audit audit = new Audit();
-    @ManyToOne
-    @JoinColumn(name = "task_group_id")
-    private TaskGroup group;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "group")
+    private Set<Task> tasks;
 
     public int getId() {
         return id;
@@ -48,36 +45,11 @@ public class Task {
         this.done = done;
     }
 
-    public LocalDateTime getDeadLine() {
-        return deadline;
+    public Set<Task> getTasks() {
+        return tasks;
     }
 
-    void setDeadLine(LocalDateTime deadLine) {
-        this.deadline = deadLine;
+    void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
     }
-
-    Audit getAudit() {
-        return audit;
-    }
-
-    void setAudit(Audit audit) {
-        this.audit = audit;
-    }
-
-    TaskGroup getGroup() {
-        return group;
-    }
-
-    void setGroup(TaskGroup group) {
-        this.group = group;
-    }
-
-    public void updateFrom(final Task source) {
-        description = source.description;
-        done = source.done;
-        deadline = source.deadline;
-        group = source.group;
-    }
-
-
 }
