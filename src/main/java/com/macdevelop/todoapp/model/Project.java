@@ -14,12 +14,12 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotBlank(message = "Project description must not be empty")
+    @NotBlank(message = "Project's description must not be empty")
     private String description;
+    @OneToMany(mappedBy = "project")
+    private Set<TaskGroup> taskGroups;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
-    Set<TaskGroup> taskGroups;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
-    Set<ProjectStep> projectSteps;
+    private Set<ProjectStep> projectSteps;
 
     public int getId() {
         return id;

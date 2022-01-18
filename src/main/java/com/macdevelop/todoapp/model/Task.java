@@ -24,6 +24,11 @@ public class Task {
     @JoinColumn(name = "task_group_id")
     private TaskGroup group;
 
+    public Task(String description, LocalDateTime deadline) {
+        this.description = description;
+        this.deadline = deadline;
+    }
+
     public int getId() {
         return id;
     }
