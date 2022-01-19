@@ -1,6 +1,5 @@
 package com.macdevelop.todoapp.service;
 
-import com.macdevelop.todoapp.configuration.TaskConfigurationProperties;
 import com.macdevelop.todoapp.model.TaskGroup;
 import com.macdevelop.todoapp.model.projection.GroupReadModel;
 import com.macdevelop.todoapp.model.projection.GroupWriteModel;
@@ -38,5 +37,6 @@ public class TaskGroupService {
         TaskGroup result = repository.findById(groupId)
                 .orElseThrow(() -> new IllegalArgumentException("TaskGroup with given id not found"));
         result.setDone(!result.isDone());
+        repository.save(result);
     }
 }

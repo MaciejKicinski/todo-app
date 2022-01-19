@@ -1,7 +1,6 @@
 package com.macdevelop.todoapp.model.projection;
 
 import com.macdevelop.todoapp.model.TaskGroup;
-import lombok.AllArgsConstructor;
 
 import java.util.Set;
 import java.util.stream.Collectors;

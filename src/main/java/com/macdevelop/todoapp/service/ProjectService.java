@@ -2,7 +2,6 @@ package com.macdevelop.todoapp.service;
 
 import com.macdevelop.todoapp.configuration.TaskConfigurationProperties;
 import com.macdevelop.todoapp.model.Project;
-import com.macdevelop.todoapp.model.TaskGroup;
 import com.macdevelop.todoapp.model.projection.GroupReadModel;
 import com.macdevelop.todoapp.model.projection.GroupTaskWriteModel;
 import com.macdevelop.todoapp.model.projection.GroupWriteModel;
