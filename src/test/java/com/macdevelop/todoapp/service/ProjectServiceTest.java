@@ -27,10 +27,10 @@ class ProjectServiceTest {
         TaskConfigurationProperties mockConfig = configurationReturning(false);
 
         // system under test
-        var toTest = new ProjectService(null, mockGroupRepository, mockConfig, null);
+        var toTest = new ProjectService(null, mockGroupRepository, mockConfig);
 
         // when
-        var exception = catchThrowable(() -> toTest.createGroup(0, LocalDateTime.now()));
+        var exception = catchThrowable(() -> toTest.createGroup(LocalDateTime.now(), 0));
 
         // then
         assertThat(exception).isInstanceOf(IllegalStateException.class).hasMessageContaining("one undone group");
@@ -45,9 +45,9 @@ class ProjectServiceTest {
         // and
         TaskConfigurationProperties mockConfig = configurationReturning(true);
         // system under test
-        var toTest = new ProjectService(mockRepository, null, mockConfig, null);
+        var toTest = new ProjectService(mockRepository, null, mockConfig);
         // when
-        var exception = catchThrowable(() -> toTest.createGroup(0, LocalDateTime.now()));
+        var exception = catchThrowable(() -> toTest.createGroup(LocalDateTime.now(), 0));
 
         // then
         assertThat(exception).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("id not found");
@@ -64,9 +64,9 @@ class ProjectServiceTest {
         // and
         TaskConfigurationProperties mockConfig = configurationReturning(true);
         // system under test
-        var toTest = new ProjectService(mockRepository, mockGroupRepository, mockConfig, null);
+        var toTest = new ProjectService(mockRepository, mockGroupRepository, mockConfig);
         // when
-        var exception = catchThrowable(() -> toTest.createGroup(0, LocalDateTime.now()));
+        var exception = catchThrowable(() -> toTest.createGroup(LocalDateTime.now(), 0));
 
         // then
         assertThat(exception).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("id not found");
