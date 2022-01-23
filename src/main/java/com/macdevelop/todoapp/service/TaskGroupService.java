@@ -31,7 +31,7 @@ public class TaskGroupService {
     }
 
     public void toggleGroup(int groupId) {
-        if (repository.existsByDoneIsFalseAndProject_Id(groupId)) {
+        if (taskRepository.existsByDoneIsFalseAndGroup_Id(groupId)) {
             throw new IllegalStateException("Group has undone tasks. Done all the tasks first.");
         }
         TaskGroup result = repository.findById(groupId)
