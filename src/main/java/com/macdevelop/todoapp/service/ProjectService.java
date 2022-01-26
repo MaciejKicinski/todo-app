@@ -5,18 +5,15 @@ import com.macdevelop.todoapp.model.Project;
 import com.macdevelop.todoapp.model.Task;
 import com.macdevelop.todoapp.model.TaskGroup;
 import com.macdevelop.todoapp.model.projection.GroupReadModel;
-import com.macdevelop.todoapp.model.projection.GroupTaskWriteModel;
-import com.macdevelop.todoapp.model.projection.GroupWriteModel;
 import com.macdevelop.todoapp.repository.ProjectRepository;
 import com.macdevelop.todoapp.repository.TaskGroupRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+
 @AllArgsConstructor
 public class ProjectService {
     private ProjectRepository projectRepository;

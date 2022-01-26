@@ -32,14 +32,14 @@ class TaskController {
     @RequestMapping(value = "/tasks", params = {"!sort", "!page", "!size"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     ResponseEntity<List<Task>> readAllTasks2() {
-        log.info("---------Get all Tasks without params endpoint reached.---------");
+        log.debug("Get all Tasks without params endpoint reached.");
         return ResponseEntity.ok(repository.findAll());
     }
 
     @RequestMapping(value = "/tasks/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     ResponseEntity<Task> getTaskById(@PathVariable int id) {
-        log.info("---------Get all Tasks with params endpoint reached.---------");
+        log.debug("Get all Tasks with params endpoint.");
         return repository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
