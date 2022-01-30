@@ -5,6 +5,7 @@ import com.macdevelop.todoapp.model.Project;
 import com.macdevelop.todoapp.model.projection.GroupReadModel;
 import com.macdevelop.todoapp.model.projection.GroupTaskWriteModel;
 import com.macdevelop.todoapp.model.projection.GroupWriteModel;
+import com.macdevelop.todoapp.model.projection.ProjectWriteModel;
 import com.macdevelop.todoapp.repository.ProjectRepository;
 import com.macdevelop.todoapp.repository.TaskGroupRepository;
 import lombok.AllArgsConstructor;
@@ -25,9 +26,8 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
-    public Project save(final Project toSave) {
-        projectRepository.save(toSave);
-        return toSave;
+    public Project save(final ProjectWriteModel toSave) {
+        return projectRepository.save(toSave.toProject());
     }
 
     public GroupReadModel createGroup(LocalDateTime deadline, int projectId) {
@@ -48,7 +48,7 @@ public class ProjectService {
                                             }
                                     ).collect(Collectors.toSet())
                     );
-                    return taskGroupService.createGroup(targetGroup);
+                    return taskGroupService.createGroup(targetGroup, project);
                 }).orElseThrow(() -> new IllegalArgumentException("Project with given id not found"));
     }
 }

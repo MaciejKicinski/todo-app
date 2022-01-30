@@ -33,7 +33,7 @@ public class Project {
         return description;
     }
 
-    void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -49,7 +49,7 @@ public class Project {
         return projectSteps;
     }
 
-    void setProjectSteps(Set<ProjectStep> projectSteps) {
+    public void setProjectSteps(Set<ProjectStep> projectSteps) {
         this.projectSteps = projectSteps;
     }
 }

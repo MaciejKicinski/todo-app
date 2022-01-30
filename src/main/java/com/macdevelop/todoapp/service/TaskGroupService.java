@@ -1,5 +1,6 @@
 package com.macdevelop.todoapp.service;
 
+import com.macdevelop.todoapp.model.Project;
 import com.macdevelop.todoapp.model.TaskGroup;
 import com.macdevelop.todoapp.model.projection.GroupReadModel;
 import com.macdevelop.todoapp.model.projection.GroupWriteModel;
@@ -16,7 +17,11 @@ public class TaskGroupService {
     private TaskRepository taskRepository;
 
     public GroupReadModel createGroup(final GroupWriteModel source) {
-        TaskGroup result = repository.save(source.toGroup());
+        return createGroup(source, null);
+    }
+
+    GroupReadModel createGroup(GroupWriteModel source, Project project) {
+        TaskGroup result = repository.save(source.toGroup(project));
         return new GroupReadModel(result);
     }
 
@@ -35,4 +40,6 @@ public class TaskGroupService {
         result.setDone(!result.isDone());
         repository.save(result);
     }
+
+
 }
