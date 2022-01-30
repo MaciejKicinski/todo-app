@@ -7,3 +7,12 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude:
+          include: '*'
+server:
+  error:
+    include-message: always

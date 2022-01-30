@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface TaskRepository {
     List<Task> findAll();
@@ -14,6 +15,8 @@ public interface TaskRepository {
     Page<Task> findAll(Pageable page);
 
     Optional<Task> findById(Integer id);
+
+    Set<Task> findAllByGroup_Id(Integer id);
 
     boolean existsById(Integer id);
 

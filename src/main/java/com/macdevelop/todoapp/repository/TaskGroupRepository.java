@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public interface TaskGroupRepository {
 
+    boolean existsById(int id);
+
     List<TaskGroup> findAll();
 
     Optional<TaskGroup> findById(Integer id);

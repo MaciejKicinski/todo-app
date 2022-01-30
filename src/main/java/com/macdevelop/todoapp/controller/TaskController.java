@@ -2,7 +2,7 @@ package com.macdevelop.todoapp.controller;
 
 import com.macdevelop.todoapp.model.Task;
 import com.macdevelop.todoapp.repository.TaskRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -16,7 +16,7 @@ import java.net.URI;
 import java.util.List;
 
 @Slf4j
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Controller
 @RequestMapping(path = "/v2")
 class TaskController {

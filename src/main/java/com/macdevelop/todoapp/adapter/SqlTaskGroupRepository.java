@@ -14,4 +14,10 @@ public interface SqlTaskGroupRepository extends TaskGroupRepository, JpaReposito
     @Query("select distinct g from TaskGroup g join fetch g.tasks")
     List<TaskGroup> findAll();
 
+    @Override
+    boolean existsByDoneIsFalseAndProject_Id(Integer projectId);
+
+    @Override
+    boolean existsById(int id);
+
 }

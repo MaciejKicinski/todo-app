@@ -46,6 +46,11 @@ class TestConfiguration {
             }
 
             @Override
+            public Set<Task> findAllByGroup_Id(Integer id) {
+                return Set.of();
+            }
+
+            @Override
             public Optional<Task> findById(final Integer id) {
                 return Optional.ofNullable(tasks.get(id));
             }

@@ -34,4 +34,17 @@ class TaskRestControllerE2ETest {
 
         assertThat(result).hasSize(initial + 2);
     }
+
+    @Test
+    void httpGet_returnAllTasksWithPagination() {
+        // given
+        var initial = repository.findAll().size();
+        repository.save(new Task("foo", LocalDateTime.now()));
+        repository.save(new Task("bar", LocalDateTime.now()));
+
+        // when
+        Task[] result = restTemplate.getForObject("http://localhost:" + port + "/tasks??page=0&size=3", Task[].class);
+
+        assertThat(result).hasSize(initial + 2);
+    }
 }
