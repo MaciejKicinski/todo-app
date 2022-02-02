@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
 
-import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -61,9 +61,9 @@ public class TaskControllerIntegrationTest {
     void httpPut_updateNotExistingTask() throws Exception {
         // given
         var json = generateJsonOfTaskObjectWithDescription("test");
-        int id = anyInt();
+        //int id = ;
         // when + then
-        mockMvc.perform(put("/tasks/"+id)
+        mockMvc.perform(put("/tasks/9999" )
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().is4xxClientError());
@@ -76,7 +76,7 @@ public class TaskControllerIntegrationTest {
         var json = generateJsonOfTaskObjectWithDescription("test");
         log.info(json);
         // when + then
-        mockMvc.perform(put("/tasks/"+id)
+        mockMvc.perform(put("/tasks/" + id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().is2xxSuccessful());
@@ -89,7 +89,7 @@ public class TaskControllerIntegrationTest {
         var json = generateJsonOfTaskObjectWithDescription("");
         log.info(json);
         // when + then
-        mockMvc.perform(put("/tasks/"+id)
+        mockMvc.perform(put("/tasks/" + id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().is4xxClientError());
@@ -98,9 +98,9 @@ public class TaskControllerIntegrationTest {
     @Test
     void httpPatch_toggleNotExistingTask() throws Exception {
         //given
-        int id = anyInt();
+
         // when + then
-        mockMvc.perform(patch("/tasks/" + id))
+        mockMvc.perform(patch("/tasks/999999" ))
                 .andExpect(status().is4xxClientError());
     }
 
@@ -115,8 +115,8 @@ public class TaskControllerIntegrationTest {
 
     private String generateJsonOfTaskObjectWithDescription(String desc) throws JsonProcessingException {
         return new ObjectMapper().writeValueAsString(ImmutableMap.builder()
-                        .put("description", desc)
-                        .put("deadLine","2022-01-10T23:59:59.999")
-                        .build());
+                .put("description", desc)
+                .put("deadLine", "2022-01-10T23:59:59.999")
+                .build());
     }
 }

@@ -50,7 +50,7 @@
         <legend>Nowy projekt</legend>
         <!--/*@thymesVar id="project" type="com.macdevelop.todoapp.model.projection.ProjectWriteModel"*/-->
         <form action="#" method="post" th:action="@{/projects}" th:object="${project}">
-            <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}">Incorrect date</p>
+            <p class="C(red)" th:if="${#fields.hasAnyErrors()}" th:errors="*{all}">Incorrect date</p>
             <label>
                 Opis
                 <input type="text" th:field="*{description}" th:errorclass="'Bdc(red)'"/>

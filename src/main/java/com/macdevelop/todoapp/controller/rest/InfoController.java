@@ -1,4 +1,4 @@
-package com.macdevelop.todoapp.controller;
+package com.macdevelop.todoapp.controller.rest;
 
 import com.macdevelop.todoapp.configuration.TaskConfigurationProperties;
 import lombok.AllArgsConstructor;

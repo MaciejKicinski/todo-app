@@ -1,4 +1,4 @@
-package com.macdevelop.todoapp.controller;
+package com.macdevelop.todoapp.controller.rest;
 
 import com.macdevelop.todoapp.model.Task;
 import com.macdevelop.todoapp.repository.TaskRepository;
@@ -19,6 +19,7 @@ import java.util.concurrent.CompletableFuture;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/tasks")
+public
 class TaskRestController {
     private final TaskRepository repository;
     private final TaskService taskService;
