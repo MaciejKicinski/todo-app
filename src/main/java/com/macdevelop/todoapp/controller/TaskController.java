@@ -65,15 +65,4 @@ class TaskController {
                 });
         return ResponseEntity.noContent().build();
     }
-
-//    @RequestMapping(value = "/tasks/{id}", method = RequestMethod.PATCH, produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    ResponseEntity<?> updatePartOfTask(@PathVariable int id, @RequestBody Task toUpdate) {
-//        if (!repository.existsById(id)) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        toUpdate.setId(id);
-//        repository.save(toUpdate);
-//        return ResponseEntity.noContent().build();
-//    }
 }
