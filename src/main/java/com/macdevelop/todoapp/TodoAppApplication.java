@@ -20,5 +20,4 @@ public class TodoAppApplication  {
     Validator validator() {
         return new LocalValidatorFactoryBean();
     }
-
 }
