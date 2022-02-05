@@ -1,5 +1,6 @@
 package com.macdevelop.todoapp.model;
 
+import com.macdevelop.todoapp.model.event.TaskEvent;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -56,8 +57,9 @@ public class Task {
         return done;
     }
 
-    public void setDone(boolean done) {
-        this.done = done;
+    public TaskEvent toggle() {
+        this.done = !this.done;
+        return TaskEvent.changed(this);
     }
 
     public LocalDateTime getDeadLine() {

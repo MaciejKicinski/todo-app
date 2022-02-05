@@ -5,6 +5,7 @@ import com.macdevelop.todoapp.repository.TaskRepository;
 import com.macdevelop.todoapp.service.TaskService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ import java.util.concurrent.CompletableFuture;
 @RequestMapping("/tasks")
 public
 class TaskRestController {
+    private final ApplicationEventPublisher eventPublisher;
     private final TaskRepository repository;
     private final TaskService taskService;
 
@@ -76,7 +78,8 @@ class TaskRestController {
             return ResponseEntity.notFound().build();
         }
         repository.findById(id)
-                .ifPresent(task -> task.setDone(!task.isDone()));
+                .map(Task::toggle)
+                .ifPresent(eventPublisher::publishEvent);
         return ResponseEntity.noContent().build();
     }
 }
