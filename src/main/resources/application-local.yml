@@ -16,3 +16,8 @@ management:
 server:
   error:
     include-message: always
+keycloak:
+  auth-server-url: 'http://localhost:8080/auth'
+  realm: 'TodoApp'
+  resource: 'todo-app-client'
+  public-client: true

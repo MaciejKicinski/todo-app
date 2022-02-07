@@ -6,6 +6,8 @@ import com.macdevelop.todoapp.model.projection.ProjectWriteModel;
 import com.macdevelop.todoapp.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,15 +18,19 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 @Controller
 @RequestMapping("/projects")
 public class ProjectController {
     private final ProjectService projectService;
 
     @GetMapping
-    String showProjects(Model model) {
-        model.addAttribute("project", new ProjectWriteModel());
-        return "projects";
+    String showProjects(Model model, Authentication auth) {
+     //   if (auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+            model.addAttribute("project", new ProjectWriteModel());
+            return "projects";
+     //   }
+     //   return "index";
     }
 
     @PostMapping
